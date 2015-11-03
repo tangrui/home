@@ -8,16 +8,13 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home
 
 export GROOVY_HOME=/Users/tangrui/Environment/groovy-2.3.4
 
-export HADOOP_HOME=/Users/tangrui/Environment/hadoop-2.2.0
-export HADOOP_OPTS="-Djava.security.krb5.realm=OX.AC.UK -Djava.security.krb5.kdc=kdc0.ox.ac.uk:kdc1.ox.ac.uk -Djava.awt.headless=true -Djava.awt.UIElement=true"
-
 export VERTX_HOME=/Users/tangrui/Environment/vert.x-3.0.0
 
 export GRADLE_HOME=/Users/tangrui/Environment/gradle-2.2.1
 
 export GOPATH=/usr/local/Cellar/go/1.5
 
-export PATH=$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$VERTX_HOME/bin:$GROOVY_HOME/bin:/Users/tangrui/Environment/fast-export:#GRADLE_HOME/bin:$PATH
+export PATH=$JAVA_HOME/bin:$VERTX_HOME/bin:$GROOVY_HOME/bin:/Users/tangrui/Environment/fast-export:$GRADLE_HOME/bin:/usr/local/sbin:$PATH
 
 # export HTTP_PROXY=localhost:7070
 # export HTTPS_PROXY=$HTTP_PROXY
