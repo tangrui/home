@@ -107,6 +107,7 @@ Plugin 'vim-scripts/groovy.vim'
 Plugin 'sudar/vim-arduino-syntax'
 Plugin 'leshill/vim-json'
 Plugin 'pangloss/vim-javascript'
+Plugin 'isRuslan/vim-es6'
 " Plugin 'jelera/vim-javascript-syntax'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'maksimr/vim-jsbeautify'
@@ -137,7 +138,7 @@ Plugin 'vim-scripts/mru.vim'
 Plugin 'basepi/vim-conque'
 Plugin 'mattn/emmet-vim'
 Plugin 'maxbrunsfeld/vim-yankstack'
-Plugin 'kien/rainbow_parentheses.vim'
+" Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'vim-scripts/sketch.vim'
 Plugin 'vim-jp/autofmt'
 " auto detect file encoding by character frequency
@@ -156,6 +157,7 @@ Plugin 'moll/vim-node'
 Plugin 'majutsushi/tagbar'
 Plugin 'mattn/calendar-vim'
 Plugin 'ervandew/supertab'
+Plugin 'SirVer/ultisnips'
 Plugin 'garbas/vim-snipmate'
 Plugin 'scrooloose/snipmate-snippets'
 Plugin 'Lokaltog/vim-easymotion'
@@ -180,6 +182,8 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-markdown'
 Plugin 'tpope/vim-ragtag'
 
+Plugin 'GertjanReynaert/cobalt2-vim-theme.git'
+
 " enable filetype plugin
 filetype on
 filetype plugin on
@@ -193,6 +197,7 @@ filetype indent on
 "                             misc
 " ============================================================
 colorscheme desert
+" colorscheme cobalt2
 
 syntax on
 
@@ -430,10 +435,10 @@ autocmd FileType css vnoremap <buffer> <c-f> :call RangeCSSBeautify()<cr>
 " ============================================================
 "                 RainbowParentheses config
 " ============================================================
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
+" au VimEnter * RainbowParenthesesToggle
+" au Syntax * RainbowParenthesesLoadRound
+" au Syntax * RainbowParenthesesLoadSquare
+" au Syntax * RainbowParenthesesLoadBraces
 " ============================================================
 "               RainbowParentheses config end
 " ============================================================
