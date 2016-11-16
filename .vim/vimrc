@@ -1,8 +1,7 @@
 set nocompatible
-source $VIMRUNTIME/vimrc_example.vim
 
 if has("win32")
-    set runtimepath^=$HOME/.vim
+  set runtimepath^=$HOME/.vim
 endif
 
 " ============================================================
@@ -10,53 +9,53 @@ endif
 " ============================================================
 set diffexpr=MyDiff()
 function! MyDiff()
-    let opt = '-a --binary '
-    if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-    if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-    let arg1 = v:fname_in
-    if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-    let arg2 = v:fname_new
-    if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-    let arg3 = v:fname_out
-    if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-    let eq = ''
-    if $VIMRUNTIME =~ ' '
-        if &sh =~ '\<cmd'
-            let cmd = '""' . $VIMRUNTIME . '\diff"'
-            let eq = '"'
-        else
-            let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-        endif
-    else
-        let cmd = $VIMRUNTIME . '\diff'
-    endif
-    silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
+  let opt = '-a --binary '
+  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+  let arg1 = v:fname_in
+  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+  let arg2 = v:fname_new
+  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+  let arg3 = v:fname_out
+  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+  let eq = ''
+  if $VIMRUNTIME =~ ' '
+    if &sh =~ '\<cmd'
+      let cmd = '""' . $VIMRUNTIME . '\diff"'
+        let eq = '"'
+      else
+        let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+      endif
+  else
+    let cmd = $VIMRUNTIME . '\diff'
+  endif
+  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 endfunction
 
 function! ToggleVerbose()
-    if !&verbose
-        set verbosefile=$HOME/.vim/vim.log
-        set verbose=15
-    else
-        set verbose=0
-        set verbosefile=
-    endif
+  if !&verbose
+    set verbosefile=$HOME/.vim/vim.log
+    set verbose=15
+  else
+    set verbose=0
+    set verbosefile=
+  endif
 endfunction
 
 function! ToggleTags()
-    if !&tags
-        set tags=$HOME/.vim/tags
-    else
-        set tags=
-    endif
+  if !&tags
+    set tags=$HOME/.vim/tags
+  else
+    set tags=
+  endif
 endfunction
 
 function! QfMakeConv()
-    let qflist = getqflist()
-    for i in qflist
-        let i.text = iconv(i.text, "cp936", "utf-8")
-    endfor
-    call setqflist(qflist)
+  let qflist = getqflist()
+  for i in qflist
+    let i.text = iconv(i.text, "cp936", "utf-8")
+  endfor
+  call setqflist(qflist)
 endfunction
 
 function! ToggleScratch()
@@ -67,19 +66,6 @@ function! ToggleScratch()
   endif
 endfunction
 
-if has('gui_running')
-  set guifont=Hack 11
-endif
-
-"""
-" function LessCompile()
-"   let current_file = shellescape(expand('%:p'))
-"   let filename = shellescape(expand('%:r'))
-"   let command = 'silent !lessc ' . current_file . ' ' . filename . '.css'
-"   execute command
-" endfunction
-" autocmd BufWritePost,FileWritePost *.less call LessCompile()
-"""
 " ============================================================
 "                        functions end
 " ============================================================
@@ -102,10 +88,10 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'vim-scripts/genutils'
 
 " Syntax
-Plugin 'vim-scripts/groovyindent'
 Plugin 'vim-scripts/groovy.vim'
+Plugin 'tfnico/vim-gradle'
 Plugin 'sudar/vim-arduino-syntax'
-Plugin 'leshill/vim-json'
+Plugin 'elzr/vim-json'
 Plugin 'pangloss/vim-javascript'
 Plugin 'isRuslan/vim-es6'
 " Plugin 'jelera/vim-javascript-syntax'
@@ -114,7 +100,7 @@ Plugin 'maksimr/vim-jsbeautify'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'chaquotay/ftl-vim-syntax'
 Plugin 'othree/html5.vim'
-Plugin 'hail2u/vim-css3-syntax'
+Plugin 'JulesWang/css.vim'
 Plugin 'skammer/vim-css-color'
 Plugin 'groenewege/vim-less'
 Plugin 'rodjek/vim-puppet'
@@ -125,6 +111,7 @@ Plugin 'fatih/vim-go'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'briancollins/vim-jst'
+Plugin 'mxw/vim-jsx'
 
 " Tools
 Plugin 'vim-scripts/bufexplorer.zip'
@@ -196,6 +183,9 @@ filetype indent on
 " ============================================================
 "                             misc
 " ============================================================
+" set guifont=Hack:h12
+set guifont=Source\ Code\ Pro:h12
+
 colorscheme desert
 " colorscheme cobalt2
 
@@ -205,7 +195,7 @@ syntax on
 
 set fileformats=unix,dos,mac
 
-set colorcolumn=80          " mark 80th column with a red line
+set colorcolumn=80          " mark 100th column with a red line
 
 set linebreak               " only wrap when blank
 
@@ -234,7 +224,7 @@ set selection=inclusive     " the text within the cursor is selected too when se
 
 set wrap
 if (has('gui_running'))
-    set guioptions+=b       " show hscroll
+  set guioptions+=b         " show hscroll
 endif
 
 set autochdir
@@ -251,25 +241,25 @@ set tabstop=4
 set softtabstop=4
 set expandtab
 
-set wildchar=<TAB>                                              " use tab for auto-expansion in menus
+set wildchar=<TAB>                          " use tab for auto-expansion in menus
 
-set wildmode=list:longest,list:full                             " how command line completion works
+set wildmode=list:longest,list:full         " how command line completion works
 
-set suffixes=.h,.bak,~,.o,.info,.swp,.obj                       " some filetypes got lower priority
+set suffixes=.h,.bak,~,.o,.info,.swp,.obj   " some filetypes got lower priority
 
 set wildignore=*.o,*.r,*.so,*.sl,*.tar,*.tgz,*.class,*.jar      " ignore some files for filename completion
 
-set showmode        " shows the current status (insert, visual, ...) in statusline
+set showmode                                " shows the current status (insert, visual, ...) in statusline
 
-set shortmess=a     " use shortest messages
+set shortmess=a                             " use shortest messages
 
 set omnifunc=syntaxcomplete#Complete
 
 " config undo features
 set undofile
 set undodir=~/.vim/undodir
-set undolevels=1000 "maximum number of changes that can be undone
-set undoreload=10000 "maximum number lines to save for undo on a buffer reload
+set undolevels=1000                         "maximum number of changes that can be undone
+set undoreload=10000                        "maximum number lines to save for undo on a buffer reload
 " ============================================================
 "                           misc end
 " ============================================================
@@ -279,7 +269,7 @@ set undoreload=10000 "maximum number lines to save for undo on a buffer reload
 "                      ui related config
 " ============================================================
 if has("win32")
-    autocmd GUIEnter * simalt ~x        " auto max vim when start
+  autocmd GUIEnter * simalt ~x          " auto max vim when start
 endif
 
 set guioptions-=T                       " turn off useless toolbar
@@ -297,6 +287,7 @@ set guioptions-=m                       " turn off menu bar (toggle with CTRL+F1
 " ============================================================
 "                           key maps
 " ============================================================
+imap ii <ESC>
 imap <C-h> <LEFT>
 imap <C-j> <DOWN>
 imap <C-k> <UP>
@@ -381,20 +372,20 @@ autocmd BufWritePost *.coffee,*.litcoffee silent make!
 "                   encoding related config
 " ============================================================
 if has("multi_byte")
-    if &termencoding == ""
-        let &termencoding = &encoding
-    endif
-    set encoding=utf-8
-    setglobal fileencoding=utf-8
-    set fileencodings=ucs-bom,utf-8,cp936,big5,euc-jp,euc-kr,latin1,gbk,gb2312
-    set nobomb
-    set langmenu=zh_CN.UTF-8
-    language messages zh_CN.UTF-8
+  if &termencoding == ""
+    let &termencoding = &encoding
+  endif
+  set encoding=utf-8
+  setglobal fileencoding=utf-8
+  set fileencodings=ucs-bom,utf-8,cp936,big5,euc-jp,euc-kr,latin1,gbk,gb2312
+  set nobomb
+  set langmenu=zh_CN.UTF-8
+  language messages zh_CN.UTF-8
 
-    source $VIMRUNTIME/delmenu.vim
-    source $VIMRUNTIME/menu.vim
+  source $VIMRUNTIME/delmenu.vim
+  source $VIMRUNTIME/menu.vim
 else
-    echoerr "Sorry, this version of (g)vim was not compiled with +multi_byte"
+  echoerr "Sorry, this version of (g)vim was not compiled with +multi_byte"
 endif
 " ============================================================
 "                 encoding related config end
@@ -404,11 +395,11 @@ endif
 " ============================================================
 "                           NERDTree
 " ============================================================
-let NERDTreeDirArrows=1
-let g:NERDTreeHijackNetrw=0 " that fixes a problem with NERDTree and vim-bundler
-let g:NERDTreeShowBookmarks=1
-let g:NERDTreeMouseMode=3
-let g:NERDTreeWinSize=30
+let NERDTreeDirArrows = 1
+let g:NERDTreeHijackNetrw = 0 " that fixes a problem with NERDTree and vim-bundler
+let g:NERDTreeShowBookmarks = 1
+let g:NERDTreeMouseMode = 3
+let g:NERDTreeWinSize = 30
 " ============================================================
 "                         NERDTree end
 " ============================================================
@@ -487,28 +478,8 @@ setl scrollbind
 
 let g:ctrlp_working_path_mode = 'ra'
 
+let g:jsx_ext_required = 0 " Vim JSX
+
+let g:vim_json_syntax_conceal = 0
+
 execute pathogen#infect()
-" ============================================================
-"                   other plugins config end
-" ============================================================
-
-
-" tSkeleton
-"autocmd BufNewFile *.java TSkeletonSetup template.java
-"autocmd BufNewFile *.xml TSkeletonSetup template.xml
-"autocmd BufNewFile *.ftl TSkeletonSetup template.ftl
-" Create new tag
-"if !exists('*TSkeleton_JAVA_PACKAGE') "{{{2
-"    function! TSkeleton_JAVA_PACKAGE() "{{{3
-"        let file_path = expand("%:p:h")
-"        let file_path = substitute(file_path, "\\", ".", "g")
-"        let file_path = substitute(file_path, "^.*com", "com", "g")
-"        return file_path
-"    endf
-"endif
-"if !exists('*TSkeleton_COMMENT') "{{{2
-"    function! TSkeleton_COMMENT() "{{{3
-"        let title = TSkeletonGetVar("tskelTitle", 'input("Please input file comment: ")', '')
-"        return title
-"    endf
-"endif
