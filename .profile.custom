@@ -1,0 +1,10 @@
+if [ -f $HOME/.bashrc ]; then
+  . $HOME/.bashrc
+fi
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+export JAVA_HOME=/Library/Java/Home
+
+export PATH=/usr/local/sbin:$HOME/Environment/fast-export:$HOME/.yarn/bin:$HOME/anaconda/bin:$PATH

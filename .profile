@@ -1,52 +1,45 @@
-export XML_CATALOG_FILES="$HOME/.catalog/catalog.xml /etc/xml/catalog"
+#!/usr/bin/env bash
 
-# export JAVA_HOME=/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
-# export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home
+# Path to the bash it configuration
+export BASH_IT="/Users/tangrui/.bash_it"
 
-# export NEXUS_HOME=/usr/local/nexus
+# Lock and Load a custom theme file
+# location /.bash_it/themes/
+export BASH_IT_THEME='bobby'
 
-export GROOVY_HOME=/Users/tangrui/Environment/groovy-2.3.4
+# (Advanced): Change this to the name of your remote repo if you
+# cloned bash-it with a remote other than origin such as `bash-it`.
+# export BASH_IT_REMOTE='bash-it'
 
-export VERTX_HOME=/Users/tangrui/Environment/vert.x-3.0.0
+# Your place for hosting Git repos. I use this for private repos.
+export GIT_HOSTING='git@git.domain.com'
 
-export GRADLE_HOME=/Users/tangrui/Environment/gradle-2.2.1
+# Don't check mail when opening terminal.
+unset MAILCHECK
 
-export GOPATH=/usr/local/Cellar/go/1.5
+# Change this to your console based IRC client of choice.
+export IRC_CLIENT='irssi'
 
-export PATH=$JAVA_HOME/bin:$VERTX_HOME/bin:$GROOVY_HOME/bin:/Users/tangrui/Environment/fast-export:$GRADLE_HOME/bin:/usr/local/sbin:$PATH
+# Set this to the command you use for todo.txt-cli
+export TODO="t"
 
-# export HTTP_PROXY=localhost:7070
-# export HTTPS_PROXY=$HTTP_PROXY
-# export ALL_PROXY=$HTTP_PROXY
+# Set this to false to turn off version control status checking within the prompt for all themes
+export SCM_CHECK=true
 
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
+# Set Xterm/screen/Tmux title with only a short hostname.
+# Unomment this (or set SHORT_HOSTNAME to something else),
+# Will otherwise fall back on $HOSTNAME.
+#export SHORT_HOSTNAME=$(hostname -s)
 
-export VAGRANT_DEFAULT_PROVIDER=virtualbox
+# Set vcprompt executable path for scm advance info in prompt (demula theme)
+# https://github.com/djl/vcprompt
+#export VCPROMPT_EXECUTABLE=~/.vcprompt/bin/vcprompt
 
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    . $(brew --prefix)/etc/bash_completion
-fi
+# (Advanced): Uncomment this to make Bash-it reload itself automatically
+# after enabling or disabling aliases, plugins, and completions.
+# export BASH_IT_AUTOMATIC_RELOAD_AFTER_CONFIG_CHANGE=1
 
-# Easily extract all compressed file types
-extract () {
-    if [ -f "$1" ] ; then
-        case $1 in
-            *.tar.bz2)   tar xvjf -- "$1"    ;;
-            *.tar.gz)    tar xvzf -- "$1"    ;;
-            *.bz2)       bunzip2 -- "$1"     ;;
-            *.rar)       unrar x -- "$1"     ;;
-            *.gz)        gunzip -- "$1"      ;;
-            *.tar)       tar xvf -- "$1"     ;;
-            *.tbz2)      tar xvjf -- "$1"    ;;
-            *.tgz)       tar xvzf -- "$1"    ;;
-            *.zip)       unzip -- "$1"       ;;
-            *.Z)         uncompress -- "$1"  ;;
-            *.7z)        7z x -- "$1"        ;;
-            *)           echo "don't know how to extract '$1'..." ;;
-        esac
-    else
-        echo "'$1' is not a valid file"
-    fi
-}
+# Load Bash It
+source $BASH_IT/bash_it.sh
+
+source $HOME/Home/.profile.custom
