@@ -1,6 +1,6 @@
 [user]
 	name = Rui Tang
-	email = tangrui.cn@gmail.com
+	email = tangrui@about.me
 [core]
 	excludesfile = /Users/tangrui/.gitignore_global
 	editor = vim
@@ -16,3 +16,5 @@
 	tool = ksdiff
 [push]
 	default = simple
+[commit]
+	template = /Users/tangrui/.stCommitMsg
