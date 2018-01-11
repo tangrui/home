@@ -88,7 +88,8 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'vim-scripts/genutils'
 
 " Syntax
-Plugin 'vim-scripts/groovy.vim'
+" Plugin 'vim-scripts/groovy.vim'
+Plugin 'rdolgushin/groovy.vim'
 Plugin 'tfnico/vim-gradle'
 Plugin 'sudar/vim-arduino-syntax'
 Plugin 'elzr/vim-json'
@@ -112,6 +113,7 @@ Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'briancollins/vim-jst'
 Plugin 'mxw/vim-jsx'
+Plugin 'posva/vim-vue'
 
 " Tools
 Plugin 'vim-scripts/bufexplorer.zip'
@@ -158,7 +160,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/vim-statline'
 " syntax checking for many many languages
-Plugin 'scrooloose/syntastic'
+Plugin 'vim-syntastic/syntastic'
 
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-fugitive'
@@ -236,9 +238,9 @@ set nobackup                " do not keep a backup file
 set isprint=@,128-255
 
 " tab stops
-set shiftwidth=4
-set tabstop=4
-set softtabstop=4
+set shiftwidth=2
+set tabstop=2
+set softtabstop=2
 set expandtab
 
 set wildchar=<TAB>                          " use tab for auto-expansion in menus
