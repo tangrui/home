@@ -1,17 +1,16 @@
-rm ~/.curlrc
-rm ~/.gitconfig
-rm ~/.gitignore_global
-rm ~/.hgext
-rm ~/.hgignore_global
-rm ~/.hgrc
-rm ~/.kdiff3rc
-rm ~/.mavenrc
-rm ~/.npmrc
-rm ~/.profile
-rm ~/.ssh
-rm ~/.subversion
-rm ~/.vim
-rm ~/.vimrc
+mv ~/.curlrc		~/.curlrc.bak
+mv ~/.gitconfig		~/.gitconfig.bak
+mv ~/.gitignore_global	~/.gitignore_global.bak
+mv ~/.hgext		~/.hgext.bak
+mv ~/.hgignore_global	~/.hgignore_global.bak
+mv ~/.hgrc		~/.hgrc.bak
+mv ~/.kdiff3rc		~/.kdiff3rc.bak
+mv ~/.mavenrc		~/.mavenrc.bak
+mv ~/.npmrc		~/.npmrc.bak
+mv ~/.profile		~/.profile.bak
+mv ~/.subversion	~/.subversion.bak
+mv ~/.vim		~/.vim.bak
+
 
 ln -s ~/Home/.curlrc            ~/.curlrc
 ln -s ~/Home/.gitconfig         ~/.gitconfig
@@ -23,8 +22,8 @@ ln -s ~/Home/.kdiff3rc          ~/.kdiff3rc
 ln -s ~/Home/.mavenrc           ~/.mavenrc
 ln -s ~/Home/.npmrc             ~/.npmrc
 ln -s ~/Home/.profile           ~/.profile
-ln -s ~/Home/.ssh               ~/.ssh
 ln -s ~/Home/.subversion        ~/.subversion
 ln -s ~/Home/.vim               ~/.vim
-ln -s ~/Home/.vimrc             ~/.vimrc
+ln -s ~/Home/.tmux              ~/.tmux
+ln -s ~/Home/.tmux.conf         ~/.tmux.conf
 

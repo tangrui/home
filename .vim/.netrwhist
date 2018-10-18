@@ -1,5 +1,5 @@
 let g:netrw_dirhistmax  =10
 let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/Users/tangrui/.bash_it'
-let g:netrw_dirhist_2='/Users/tangrui'
-let g:netrw_dirhist_3='/Users/tangrui/Code/kingdee/architecture/manapipe/dist/lib'
+let g:netrw_dirhist_1='/usr/local/Cellar/maven/3.5.2/libexec/conf'
+let g:netrw_dirhist_2='/Users/tangrui/Code/tangrui/hello-dubbo/.git'
+let g:netrw_dirhist_3='/Users/tangrui/.opt/sandbox/module'

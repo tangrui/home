@@ -2,3 +2,6 @@
 .npmrc
 .ssh/
 .subversion/
+
+eclim/
+.vim/vim.log

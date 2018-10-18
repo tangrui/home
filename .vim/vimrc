@@ -88,14 +88,12 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'vim-scripts/genutils'
 
 " Syntax
-" Plugin 'vim-scripts/groovy.vim'
 Plugin 'rdolgushin/groovy.vim'
 Plugin 'tfnico/vim-gradle'
 Plugin 'sudar/vim-arduino-syntax'
 Plugin 'elzr/vim-json'
 Plugin 'pangloss/vim-javascript'
 Plugin 'isRuslan/vim-es6'
-" Plugin 'jelera/vim-javascript-syntax'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'maksimr/vim-jsbeautify'
 Plugin 'kchmck/vim-coffee-script'
@@ -121,15 +119,15 @@ Plugin 'uguu-org/vim-matrix-screensaver'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'vim-scripts/grep.vim'
 Plugin 'duff/vim-scratch'
-Plugin 'gregsexton/MatchTag'
+" Plugin 'gregsexton/MatchTag'
 Plugin 'vim-scripts/TaskList.vim'
 Plugin 'vim-scripts/mru.vim'
-Plugin 'basepi/vim-conque'
 Plugin 'mattn/emmet-vim'
 Plugin 'maxbrunsfeld/vim-yankstack'
-" Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'vim-scripts/sketch.vim'
 Plugin 'vim-jp/autofmt'
+Plugin 'rizzatti/dash.vim'
+
 " auto detect file encoding by character frequency
 Plugin 'mbbill/fencview'
 Plugin 'vim-scripts/matchit.zip'
@@ -146,7 +144,7 @@ Plugin 'moll/vim-node'
 Plugin 'majutsushi/tagbar'
 Plugin 'mattn/calendar-vim'
 Plugin 'ervandew/supertab'
-Plugin 'SirVer/ultisnips'
+"Plugin 'SirVer/ultisnips'
 Plugin 'garbas/vim-snipmate'
 Plugin 'scrooloose/snipmate-snippets'
 Plugin 'Lokaltog/vim-easymotion'
@@ -155,6 +153,7 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-airline'
 Plugin 'Shougo/unite.vim'
+Plugin 'Jintian/vim-logfile'
 
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
@@ -171,7 +170,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-markdown'
 Plugin 'tpope/vim-ragtag'
 
-Plugin 'GertjanReynaert/cobalt2-vim-theme.git'
+Plugin 'herrbischoff/cobalt2.vim'
 
 " enable filetype plugin
 filetype on
@@ -186,7 +185,7 @@ filetype indent on
 "                             misc
 " ============================================================
 " set guifont=Hack:h12
-set guifont=Source\ Code\ Pro:h12
+set guifont=Source\ Code\ Pro:h13
 
 colorscheme desert
 " colorscheme cobalt2
