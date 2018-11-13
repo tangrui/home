@@ -12,6 +12,7 @@ mv ~/.subversion	~/.subversion.bak
 mv ~/.vim		~/.vim.bak
 
 
+ln -s ~/Home/.bashrc            ~/.bashrc
 ln -s ~/Home/.curlrc            ~/.curlrc
 ln -s ~/Home/.gitconfig         ~/.gitconfig
 ln -s ~/Home/.gitignore_global  ~/.gitignore_global
