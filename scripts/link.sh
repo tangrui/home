@@ -10,6 +10,7 @@ mv ~/.npmrc		~/.npmrc.bak
 mv ~/.profile		~/.profile.bak
 mv ~/.subversion	~/.subversion.bak
 mv ~/.vim		~/.vim.bak
+mv ~/.zshrc             ~/.zshrc.bak
 
 
 ln -s ~/Home/.bashrc            ~/.bashrc
@@ -27,4 +28,5 @@ ln -s ~/Home/.subversion        ~/.subversion
 ln -s ~/Home/.vim               ~/.vim
 ln -s ~/Home/.tmux              ~/.tmux
 ln -s ~/Home/.tmux.conf         ~/.tmux.conf
+ln -s ~/Home/.zshrc             ~/.zshrc
 
