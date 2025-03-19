@@ -77,11 +77,11 @@ endfunction
 filetype off
 set runtimepath+=$HOME/.vim/bundle/Vundle.vim
 set directory=.,$HOME/.temp
-call vundle#rc()
+call vundle#begin()
 
-let g:vundle_default_git_proto = 'git'
+" let g:vundle_default_git_proto = 'git'
 
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
@@ -170,7 +170,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-markdown'
 Plugin 'tpope/vim-ragtag'
 
-Plugin 'herrbischoff/cobalt2.vim'
+call vundle#end()
 
 " enable filetype plugin
 filetype on

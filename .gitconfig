@@ -1,6 +1,6 @@
 [user]
-	name = aomo
-	email = albert.tr@alibaba-inc.com
+	name = Rui Tang
+	email = whoami@tangrui.net
 [core]
 	excludesfile = /Users/tangrui/.gitignore_global
 	editor = vim
@@ -10,8 +10,6 @@
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
-[http]
-    #proxy =
 [merge]
 	tool = ksdiff
 [push]
