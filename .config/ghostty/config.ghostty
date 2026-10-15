@@ -1,0 +1,7 @@
+theme = Catppuccin Frappe
+
+# font-family = "Hack Nerd Font Mono"
+# font-family = "JetBrainsMono Nerd Font"
+font-family = "Maple Mono NF CN"
+font-size = 15
+# adjust-cell-height = 10%

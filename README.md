@@ -42,11 +42,22 @@ vim +PluginInstall +qall
 
 插件会下载到 `~/Home/.vim/bundle/`；该目录中的下载内容被 Git 忽略，换一台 Mac 时重新安装即可。
 
+### 4. 配置 Ghostty
+
+chezmoi 将 `~/.config/ghostty/config.ghostty` 链接到仓库。当前配置使用 Ghostty 自带的 `Catppuccin Frappe` 主题、`Maple Mono NF CN` 字体和字号 `15`。新 Mac 如尚未安装 Ghostty 和字体，可运行：
+
+```sh
+brew install --cask ghostty
+brew install --cask font-maple-mono-nf-cn
+```
+
+字体需单独安装；仅同步配置文件不会安装字体。安装命令可在 [Ghostty](https://formulae.brew.sh/cask/ghostty) 和 [Maple Mono NF CN](https://formulae.brew.sh/cask/font-maple-mono-nf-cn) 的 Homebrew 页面核对。Ghostty 在 macOS 上还会读取 `~/Library/Application Support/com.mitchellh.ghostty/config.ghostty`，该文件中的同名选项会覆盖仓库配置；如果它有内容，请合并设置，避免在两处分别修改。
+
 ## 二、已有 Mac 安装（已克隆仓库）
 
-如果这台 Mac 已有 `~/Home`，先确认仓库中已经包含 `.chezmoiroot` 和 `home/`，并保留尚未提交的本地修改。Oh My Zsh 和 Vim 若已在使用，无需重新安装；chezmoi 尚未安装时，先运行 `brew install chezmoi`。
+如果这台 Mac 已有 `~/Home`，先确认仓库中已经包含 `.chezmoiroot` 和 `home/`，并保留尚未提交的本地修改。Oh My Zsh、Vim、Ghostty 和 Maple Mono 字体若已在使用，无需重新安装；chezmoi 尚未安装时，先运行 `brew install chezmoi`。
 
-在任意目录执行以下命令，预览并接管主目录中的链接：
+在任意目录执行以下命令，预览并接管主目录中的链接。Ghostty 原有配置若是普通文件，`chezmoi diff` 会显示把它改为软链接；先确认 `~/Home/.config/ghostty/config.ghostty` 包含想保留的设置，再运行 `chezmoi apply`：
 
 ```sh
 chezmoi --source "$HOME/Home" init
@@ -58,6 +69,7 @@ chezmoi verify
 这里的 `init` 使用已有仓库，不会重新克隆。原来指向 `~/Home` 的正确软链接会保留；若主目录中有同名普通文件，先通过 `diff` 查看差异，再处理 `apply` 给出的提示。已初始化过 chezmoi 的机器无需重复运行 `init`。
 
 如果 Vim 的 `Vundle.vim` 子模块尚未检出，运行 `git -C "$HOME/Home" submodule update --init --recursive`；其他 Vim 插件尚未安装时，再运行 `vim +PluginInstall +qall`。
+
 
 ## 三、日常维护
 
