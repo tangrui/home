@@ -7,3 +7,6 @@
 # Codenvy files
 .codenvy/misc.xml
 .vfs/
+
+# Local Claude settings
+**/.claude/settings.local.json
