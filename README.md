@@ -66,7 +66,7 @@ ya pkg install
 
 ### 6. 配置 GitHub CLI
 
-chezmoi 只将 `~/.config/gh/config.yml` 链接到仓库，其中保存 HTTPS 协议、交互偏好和 `gh co` 别名。新 Mac 如尚未安装 GitHub CLI，可运行：
+chezmoi 只将 `~/.config/gh/config.yml` 链接到仓库，其中保存 HTTPS 协议、交互偏好和 `gh co` 别名；`~/.config/gh` 目录按私有目录管理，目标权限为 `0700`。新 Mac 如尚未安装 GitHub CLI，可运行：
 
 ```sh
 brew install gh
@@ -75,11 +75,17 @@ gh auth login
 
 `gh auth login` 需要在每台 Mac 上分别完成。登录状态保存在本机凭据存储或 `~/.config/gh/hosts.yml`，后者不加入仓库；同步 `config.yml` 不会同步登录信息。配置项见 [GitHub CLI 文档](https://cli.github.com/manual/gh_config)。
 
+### 7. 配置全局 AGENTS.md
+
+`global-agent-rules.md` 是 Codex 与 OpenCode 共用的全局规则正文。chezmoi 分别将 `~/.codex/AGENTS.md` 和 `~/.config/opencode/AGENTS.md` 链接到它；修改仓库中的这一份文件即可同步本机两个入口。仓库根目录特意不命名为 `AGENTS.md`，避免在处理本仓库时把同一份规则再作为项目规则加载。
+
+新 Mac 执行 `chezmoi apply` 后即可建立两个链接。规则通常在新会话开始时读取，修改后请启动新会话验证。项目自己的 `AGENTS.md` 仍留在对应项目中，负责补充该项目的要求。参见 [Codex 文档](https://learn.chatgpt.com/docs/agent-configuration/agents-md) 和 [OpenCode 文档](https://docs.opencode.ai/docs/rules/)。
+
 ## 二、已有 Mac 安装（已克隆仓库）
 
 如果这台 Mac 已有 `~/Home`，先确认仓库中已经包含 `.chezmoiroot` 和 `home/`，并保留尚未提交的本地修改。Oh My Zsh、Vim、Ghostty、Yazi、`glow`、GitHub CLI 和 Maple Mono 字体若已在使用，无需重新安装；chezmoi 尚未安装时，先运行 `brew install chezmoi`。
 
-在任意目录执行以下命令，预览并接管主目录中的链接。Ghostty、Yazi 或 GitHub CLI 原有配置若是普通文件，`chezmoi diff` 会显示把它们改为软链接；先确认仓库中的对应文件包含想保留的设置，再运行 `chezmoi apply`：
+在任意目录执行以下命令，预览并接管主目录中的链接。原有配置若是普通文件，`chezmoi diff` 会显示把它们改为软链接；先确认仓库中的对应文件包含想保留的设置。尤其要先比较现有的两份 `AGENTS.md`，将独有规则合并到 `global-agent-rules.md`，再运行 `chezmoi apply`：
 
 ```sh
 chezmoi --source "$HOME/Home" init
