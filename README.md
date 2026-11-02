@@ -81,11 +81,24 @@ gh auth login
 
 新 Mac 执行 `chezmoi apply` 后即可建立两个链接。规则通常在新会话开始时读取，修改后请启动新会话验证。项目自己的 `AGENTS.md` 仍留在对应项目中，负责补充该项目的要求。参见 [Codex 文档](https://learn.chatgpt.com/docs/agent-configuration/agents-md) 和 [OpenCode 文档](https://docs.opencode.ai/docs/rules/)。
 
+### 8. 配置 Claude Code
+
+chezmoi 还将 `~/.claude/CLAUDE.md` 链接到同一份 `global-agent-rules.md`。这样 Claude Code 在各个项目中使用与你的 Codex、OpenCode 一致的全局规则，无需维护第三份正文。新 Mac 如尚未安装 Claude Code，可运行：
+
+```sh
+brew install --cask claude-code
+claude
+```
+
+首次运行 `claude` 时按提示登录；链接不会同步登录状态。安装方式见 [Claude Code 官方文档](https://code.claude.com/docs/en/setup)。
+
+`~/.claude/settings.json` 保留在本机：其中的 DevToys 钩子使用本机路径，状态栏依赖另行安装的 `ccline`。`~/.claude.json`、技能、插件和运行记录也不由这个仓库接管。项目中的 `CLAUDE.md` 或 `AGENTS.md` 继续由各项目管理；Claude Code 在新会话开始时加载规则，可在会话中用 `/memory` 查看已加载的文件。参见 [Claude Code 规则文档](https://code.claude.com/docs/en/memory)。
+
 ## 二、已有 Mac 安装（已克隆仓库）
 
-如果这台 Mac 已有 `~/Home`，先确认仓库中已经包含 `.chezmoiroot` 和 `home/`，并保留尚未提交的本地修改。Oh My Zsh、Vim、Ghostty、Yazi、`glow`、GitHub CLI 和 Maple Mono 字体若已在使用，无需重新安装；chezmoi 尚未安装时，先运行 `brew install chezmoi`。
+如果这台 Mac 已有 `~/Home`，先确认仓库中已经包含 `.chezmoiroot` 和 `home/`，并保留尚未提交的本地修改。Oh My Zsh、Vim、Ghostty、Yazi、`glow`、GitHub CLI、Claude Code 和 Maple Mono 字体若已在使用，无需重新安装；chezmoi 尚未安装时，先运行 `brew install chezmoi`。
 
-在任意目录执行以下命令，预览并接管主目录中的链接。原有配置若是普通文件，`chezmoi diff` 会显示把它们改为软链接；先确认仓库中的对应文件包含想保留的设置。尤其要先比较现有的两份 `AGENTS.md`，将独有规则合并到 `global-agent-rules.md`，再运行 `chezmoi apply`：
+在任意目录执行以下命令，预览并接管主目录中的链接。原有配置若是普通文件，`chezmoi diff` 会显示把它们改为软链接；先确认仓库中的对应文件包含想保留的设置。尤其要先比较现有的两份 `AGENTS.md` 和 `~/.claude/CLAUDE.md`，将独有规则合并到 `global-agent-rules.md`，再运行 `chezmoi apply`：
 
 ```sh
 chezmoi --source "$HOME/Home" init
