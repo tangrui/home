@@ -3,6 +3,11 @@
 .npmrc
 .ssh/
 .subversion/
+.config/opencode/.env
+.config/opencode/provider-api-key
+.config/opencode/provider-base-url
+.config/opencode/opencode.json.anthropic
+.config/opencode/service.json
 
 eclim/
 .vim/vim.log

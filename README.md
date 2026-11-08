@@ -1,6 +1,6 @@
 # Home 配置
 
-这个仓库保存多台 macOS 共用的 dotfiles。配置文件放在 `~/Home`，chezmoi 根据 `home/` 中的清单，把主目录中的配置软链接到仓库。Git 管理配置内容，chezmoi 管理链接；修改仓库文件后，本机通过软链接立即生效。
+这个仓库保存多台 macOS 共用的 dotfiles。配置文件放在 `~/Home`，chezmoi 根据 `chezmoi/` 中的清单，把主目录中的配置软链接到仓库。Git 管理配置内容，chezmoi 管理链接；修改仓库文件后，本机通过软链接立即生效。
 
 ## 一、新 Mac 安装
 
@@ -18,7 +18,7 @@ chezmoi verify
 
 这些命令可在任意目录运行。`init` 把仓库克隆到 `~/Home`，连同 Vundle 子模块一起检出，并在 `~/.config/chezmoi/chezmoi.toml` 中记录仓库位置。`diff` 预览将建立或更改的链接；确认后运行 `apply`，最后用 `verify` 检查链接。如果主目录已有同名文件，先查看差异，再处理 chezmoi 给出的提示。
 
-仓库根目录的 `.chezmoiroot` 指向 `home/`：那里只声明需要安装哪些配置。
+仓库根目录的 `.chezmoiroot` 指向 `chezmoi/`：那里只声明需要安装哪些配置。
 
 ### 2. 配置 Oh My Zsh
 
@@ -44,7 +44,7 @@ vim +PluginInstall +qall
 
 ### 4. 配置 Ghostty
 
-chezmoi 将 `~/.config/ghostty/config.ghostty` 链接到仓库。当前配置使用 Ghostty 自带的 `Catppuccin Frappe` 主题、`Maple Mono NF CN` 字体和字号 `15`。新 Mac 如尚未安装 Ghostty 和字体，可运行：
+chezmoi 将 `~/.config/ghostty/config.ghostty` 链接到仓库。当前配置使用 Ghostty 自带的 `Catppuccin Frappe` 主题、`Maple Mono NF CN` 字体和字号 `13`。新 Mac 如尚未安装 Ghostty 和字体，可运行：
 
 ```sh
 brew install --cask ghostty
@@ -94,11 +94,23 @@ claude
 
 `~/.claude/settings.json` 保留在本机：其中的 DevToys 钩子使用本机路径，状态栏依赖另行安装的 `ccline`。`~/.claude.json`、技能、插件和运行记录也不由这个仓库接管。项目中的 `CLAUDE.md` 或 `AGENTS.md` 继续由各项目管理；Claude Code 在新会话开始时加载规则，可在会话中用 `/memory` 查看已加载的文件。参见 [Claude Code 规则文档](https://code.claude.com/docs/en/memory)。
 
+### 9. 配置 OpenCode
+
+chezmoi 将 `~/.config/opencode/opencode.json` 链接到仓库，保留当前自定义提供商及模型列表。配置使用 OpenCode 2 的 `providers` 格式。新 Mac 如使用桌面版，从 [OpenCode 官网](https://opencode.ai/desktop)下载对应的 macOS 安装包；如使用命令行版，可运行：
+
+```sh
+brew install anomalyco/tap/opencode-v2
+```
+
+提供商密钥和专属接口地址不放进仓库。每台 Mac 分别创建 `~/.config/opencode/provider-api-key` 和 `~/.config/opencode/provider-base-url`：文件内容只写实际值，不写 `KEY=` 前缀，并将权限设为 `0600`。`opencode.json` 使用 `{file:~/.config/opencode/...}` 在运行时读取它们；从终端或桌面图标启动都不依赖 Zsh 环境变量。只同步仓库而未创建这两个本机文件时，自定义提供商无法使用。参见 [OpenCode 2 安装说明](https://opencode.ai/v2/docs/)和[配置说明](https://opencode.ai/v2/docs/config/)。
+
+`service.json` 和旧的备选配置 `opencode.json.anthropic` 保留在本机，不由 chezmoi 管理。
+
 ## 二、已有 Mac 安装（已克隆仓库）
 
-如果这台 Mac 已有 `~/Home`，先确认仓库中已经包含 `.chezmoiroot` 和 `home/`，并保留尚未提交的本地修改。Oh My Zsh、Vim、Ghostty、Yazi、`glow`、GitHub CLI、Claude Code 和 Maple Mono 字体若已在使用，无需重新安装；chezmoi 尚未安装时，先运行 `brew install chezmoi`。
+如果这台 Mac 已有 `~/Home`，先确认仓库中已经包含 `.chezmoiroot` 和 `chezmoi/`，并保留尚未提交的本地修改。Oh My Zsh、Vim、Ghostty、Yazi、`glow`、GitHub CLI、Claude Code、OpenCode 和 Maple Mono 字体若已在使用，无需重新安装；chezmoi 尚未安装时，先运行 `brew install chezmoi`。
 
-在任意目录执行以下命令，预览并接管主目录中的链接。原有配置若是普通文件，`chezmoi diff` 会显示把它们改为软链接；先确认仓库中的对应文件包含想保留的设置。尤其要先比较现有的两份 `AGENTS.md` 和 `~/.claude/CLAUDE.md`，将独有规则合并到 `global-agent-rules.md`，再运行 `chezmoi apply`：
+在任意目录执行以下命令，预览并接管主目录中的链接。原有配置若是普通文件，`chezmoi diff` 会显示把它们改为软链接；先确认仓库中的对应文件包含想保留的设置。尤其要先比较现有的两份 `AGENTS.md` 和 `~/.claude/CLAUDE.md`，将独有规则合并到 `global-agent-rules.md`；如果现有 `opencode.json` 写有密钥和专属接口地址，先将它们分别存入本机的 `provider-api-key` 和 `provider-base-url`，再运行 `chezmoi apply`：
 
 ```sh
 chezmoi --source "$HOME/Home" init
@@ -117,6 +129,6 @@ Yazi 若只缺少 `piper` 插件，运行 `ya pkg install` 即可恢复。
 
 直接编辑 `~/Home` 中的配置文件，用 Git 查看差异、提交并推送；由于主目录使用软链接，内容改动无需再次运行 `chezmoi apply`。另一台 Mac 可以运行 `chezmoi update` 拉取仓库改动并应用链接。
 
-`git status` 查看配置内容的改动，`chezmoi status` 或 `chezmoi verify` 检查主目录链接是否符合清单。新增或移除受管理的文件时，修改 `home/` 中的清单，再运行 `chezmoi diff` 和 `chezmoi apply`。
+`git status` 查看配置内容的改动，`chezmoi status` 或 `chezmoi verify` 检查主目录链接是否符合清单。新增或移除受管理的文件时，修改 `chezmoi/` 中的清单，再运行 `chezmoi diff` 和 `chezmoi apply`。
 
 每台机器独有的 Git 设置放在 `~/.gitconfig.local`，Vim 设置放在 `~/.vimrc.local`；这两个文件不由本仓库管理。`.npmrc` 也不纳入仓库。
