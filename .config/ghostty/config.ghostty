@@ -1,7 +1,7 @@
 theme = Catppuccin Frappe
 
-# font-family = "Hack Nerd Font Mono"
-# font-family = "JetBrainsMono Nerd Font"
 font-family = "Maple Mono NF CN"
+
 font-size = 13
-# adjust-cell-height = 10%
+
+shell-integration-features = ssh-env,ssh-terminfo

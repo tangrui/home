@@ -53,6 +53,8 @@ brew install --cask font-maple-mono-nf-cn
 
 字体需单独安装；仅同步配置文件不会安装字体。安装命令可在 [Ghostty](https://formulae.brew.sh/cask/ghostty) 和 [Maple Mono NF CN](https://formulae.brew.sh/cask/font-maple-mono-nf-cn) 的 Homebrew 页面核对。Ghostty 在 macOS 上还会读取 `~/Library/Application Support/com.mitchellh.ghostty/config.ghostty`，该文件中的同名选项会覆盖仓库配置；如果它有内容，请合并设置，避免在两处分别修改。
 
+配置还启用了 `ssh-env` 和 `ssh-terminfo`：在 Ghostty 的交互式 Shell 中运行 `ssh` 时，会转发终端环境，并在需要时尝试为远端安装 Ghostty 的 terminfo。参见 [Ghostty SSH 文档](https://ghostty.org/docs/features/ssh)。
+
 ### 5. 配置 Yazi
 
 chezmoi 将 `~/.config/yazi/yazi.toml` 和 `~/.config/yazi/package.toml` 链接到仓库。当前配置使用 Yazi 官方的 `piper` 插件调用 `glow` 预览 Markdown；插件版本由 `package.toml` 记录。新 Mac 安装所需程序和插件：
