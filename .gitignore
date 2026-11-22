@@ -8,6 +8,7 @@
 .config/opencode/provider-base-url
 .config/opencode/opencode.json.anthropic
 .config/opencode/service.json
+Runtime/litellm/.env
 
 eclim/
 .vim/vim.log

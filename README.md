@@ -108,9 +108,17 @@ brew install anomalyco/tap/opencode-v2
 
 `service.json` 和旧的备选配置 `opencode.json.anthropic` 保留在本机，不由 chezmoi 管理。
 
+### 10. 配置 LiteLLM
+
+chezmoi 将 `~/Runtime/litellm/config.yaml` 和 `docker-compose.yaml` 链接到仓库。前者定义模型与路由，后者用 Docker Compose 在本机端口 `4000` 启动服务。新 Mac 需要先从 [Docker 官方网站](https://docs.docker.com/desktop/setup/install/mac-install/)安装 Docker Desktop。
+
+每台 Mac 单独创建 `~/Runtime/litellm/.env`，填入 `DASHSCOPE_API_KEY`、`LITELLM_MASTER_KEY` 和 `DASHSCOPE_API_BASE`，再运行 `chmod 600 "$HOME/Runtime/litellm/.env"`。仓库中的 `config.yaml` 只引用这些环境变量；`.env` 留在本机，不纳入 Git 或 chezmoi。LiteLLM 的配置方式见[官方文档](https://docs.litellm.ai/docs/proxy/configuration/overview)。
+
+在 `~/Runtime/litellm` 运行 `docker compose config --quiet` 可以检查配置；需要启动服务时运行 `docker compose up -d`。修改模型配置后，运行 `docker compose up -d --force-recreate litellm`，让运行中的服务读取新配置。
+
 ## 二、已有 Mac 安装（已克隆仓库）
 
-如果这台 Mac 已有 `~/Home`，先确认仓库中已经包含 `.chezmoiroot` 和 `chezmoi/`，并保留尚未提交的本地修改。Oh My Zsh、Vim、Ghostty、Yazi、`glow`、GitHub CLI、Claude Code、OpenCode 和 Maple Mono 字体若已在使用，无需重新安装；chezmoi 尚未安装时，先运行 `brew install chezmoi`。
+如果这台 Mac 已有 `~/Home`，先确认仓库中已经包含 `.chezmoiroot` 和 `chezmoi/`，并保留尚未提交的本地修改。Oh My Zsh、Vim、Ghostty、Yazi、`glow`、GitHub CLI、Claude Code、OpenCode、Docker Desktop 和 Maple Mono 字体若已在使用，无需重新安装；chezmoi 尚未安装时，先运行 `brew install chezmoi`。
 
 在任意目录执行以下命令，预览并接管主目录中的链接。原有配置若是普通文件，`chezmoi diff` 会显示把它们改为软链接；先确认仓库中的对应文件包含想保留的设置。尤其要先比较现有的两份 `AGENTS.md` 和 `~/.claude/CLAUDE.md`，将独有规则合并到 `global-agent-rules.md`；如果现有 `opencode.json` 写有密钥和专属接口地址，先将它们分别存入本机的 `provider-api-key` 和 `provider-base-url`，再运行 `chezmoi apply`：
 
